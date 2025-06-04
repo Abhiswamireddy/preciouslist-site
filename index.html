@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>uniteconomics.io</title>
+    <link rel="stylesheet" href="https://stijndv.com/fonts/Eudoxus-Sans.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S117Y3875X"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-S117Y3875X');
+    </script>
+
+    <style>
+        :root {
+            --background-height: 100vh;
+            --site-language-alignment: left;
+            --site-language-direction: ltr;
+            --site-language-flex-alignment: flex-start;
+            --site-language-indent-left: 1;
+            --site-language-indent-right: 0;
+            --viewport-height: 100vh;
+            --bg-color: #f2f1efff;
+        }
+
+        body {
+            background-color: var(--bg-color);
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        h1 {
+            font-size: 2.1em;
+            color: rgba(0, 0, 0, 0.7);
+            font-weight: 700;
+            line-height: 1.2em;
+        }
+
+        h2 {
+            font-size: 1.75em;
+            color: rgba(0, 0, 0, 0.7);
+            font-weight: 700;
+        }
+
+        p {
+            font-size: 1em;
+            line-height: 1.575;
+            color: rgba(0, 0, 0, 0.4);
+        }
+
+        #landing-page-container {
+            min-height: 100vh;
+        }
+
+        .align-center {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+        .p-b-50 {
+            padding-bottom: 50px;
+        }
+
+        .p-t-50 {
+            padding-top: 50px;
+        }
+
+        .inner-container {
+            width: 80%;
+            background-color: #FFFFFF;
+            border-radius: 10px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            position: relative;
+        }
+
+        .content {
+            padding: 50px;
+        }
+
+        .content-container {
+            border-right: solid 1px rgba(0, 0, 0, 0.102);
+        }
+
+        .content-form {
+            padding: 50px;
+            flex-direction: column;
+        }
+
+        .c-text-box {
+            padding: 0 1.05rem;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            height: 3rem;
+            width: -webkit-fill-available;
+            width: -ie-fill-available;
+            width: -moz-fill-available;
+            line-height: calc(3rem - 2px);
+            color: rgba(0, 0, 0, 0.322);
+            margin-bottom: 20px;
+        }
+
+        .c-text-btn {
+            padding: 0 1.05rem;
+            border-radius: 5px;
+            border: none;
+            height: 3rem;
+            width: 100%;
+            color: #FFFFFF;
+            /* background: linear-gradient(92.18deg, #a049e9 -25.78%, #6643db 123.02%); */
+            background: #572d4f;
+        }
+
+        /* The circles or bullets and indicators */
+        .dots {
+            cursor: pointer;
+            height: 16px;
+            width: 16px;
+            margin: 10px 3px;
+            /* background: linear-gradient(92.18deg, #a049e9 -25.78%, #6643db 123.02%); */
+            background: #795f71;
+            opacity: 0.3;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.5s ease;
+        }
+
+        .enable,
+        .dots:hover {
+            /* background: linear-gradient(92.18deg, #a049e9 -25.78%, #6643db 123.02%); */
+            background: #572d4f;
+            opacity: 1;
+        }
+
+        /* Faint animation */
+        .fade {
+            -webkit-animation-name: fade;
+            -webkit-animation-duration: 1.4s;
+            animation-name: fade;
+            animation-duration: 1.4s;
+        }
+
+        @-webkit-keyframes fade {
+            from {
+                opacity: .5
+            }
+
+            to {
+                opacity: 2
+            }
+        }
+
+        @keyframes fade {
+            from {
+                opacity: .5
+            }
+
+            to {
+                opacity: 2
+            }
+        }
+
+        .slider-content {
+            display: none;
+        }
+
+        .lds-dual-ring {
+            display: inline-block;
+        }
+
+        .lds-dual-ring:after {
+            content: " ";
+            display: block;
+            width: 15px;
+            height: 15px;
+            margin: 8px;
+            border-radius: 50%;
+            border: 4px solid #fff;
+            border-color: #fff transparent #fff transparent;
+            animation: lds-dual-ring 1.2s linear infinite;
+        }
+
+        @keyframes lds-dual-ring {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .error-msg {
+            padding-bottom: 15px;
+            width: 100%;
+            font-size: 12px;
+        }
+
+        .success-overlay {
+            width: 100%;
+            min-height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: all 0.4s;
+            opacity: 0;
+            background-color: rgb(235, 235, 235);
+            border-radius: 6px;
+            transform: translateX(-100%);
+        }
+
+        .success-overlay-content {
+            height: calc(100% - 30px);
+            padding: 0 30px 30px 30px;
+        }
+
+        .success-inner-content {
+            border-radius: 6px;
+        }
+
+        .success-overlay h1 {
+            z-index: 1;
+            text-align: center;
+        }
+
+        .success-header {
+            display: flex;
+            justify-content: end;
+        }
+
+        .close-btn {
+            height: 18px;
+            width: 18px;
+            border-radius: 50%;
+            border: none;
+            font-size: 10px;
+            /* background: linear-gradient(92.18deg, #a049e9 -25.78%, #6643db 123.02%); */
+            background: #572d4f;
+            color: #FFFFFF;
+            margin: 10px;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        .d-para {
+            padding-bottom: 10px;
+        }
+
+        .success-inner-content h1 {
+            font-size: 2em;
+            padding-bottom: 20px;
+        }
+
+        .success-inner-content .d-para {
+            font-size: 1em;
+            font-size: 0.9em;
+        }
+
+        .success-inner-content .d-title {
+            font-size: 1em;
+            padding-bottom: 5px;
+            display: inline;
+        }
+
+        .list-points {
+            padding-left: 30px;
+        }
+
+        .list-points li {
+            font-size: 16px;
+            font-weight: 300;
+        }
+
+        .list-points li .d-para {
+            padding-left: 10px;
+            display: inline-block;
+        }
+
+
+        /* Extra small devices (phones, 480px and down) */
+        @media only screen and (max-width: 480px) {
+            h1 {
+                font-size: 3em;
+                text-align: center;
+            }
+
+            h2 {
+                font-size: 1.75em;
+                text-align: center;
+            }
+
+            .inner-container {
+                grid-template-columns: 1fr;
+            }
+
+            .inner-container {
+                width: 100%;
+            }
+        }
+
+        /* Small devices (portrait tablets and large phones, 480px and up) */
+        @media only screen and (min-width: 481px) and (max-width: 1023px) {
+            h1 {
+                font-size: 3em;
+                text-align: center;
+            }
+
+            h2 {
+                font-size: 1.75em;
+                text-align: center;
+            }
+
+            .inner-container {
+                grid-template-columns: 1fr;
+            }
+
+            .inner-container {
+                width: 100%;
+            }
+        }
+
+        /* Small devices (portrait tablets and large phones, 480px and up) */
+        @media only screen and (min-width: 481px) and (max-width: 1023px) and (orientation: landscape) {
+            h1 {
+                font-size: 3em;
+                text-align: center;
+            }
+
+            h2 {
+                font-size: 1.75em;
+                text-align: center;
+            }
+
+            .inner-container {
+                grid-template-columns: 1fr;
+            }
+
+            .inner-container {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <section id="landing-page-container" class="align-center">
+        <div class="inner-container">
+            <div class="content-container">
+                <div class="content">
+                    <section class="slider-content">
+                        <h1> Is Managing Your Growing Collection Becoming Overwhelming?</h1>
+                        <p class="p-t-50">As your collection of valuables grows, keeping track of
+                            items for different occasions, owners, or insurance purposes can be
+                            chaotic. Precious List lets you effortlessly create custom
+                            collections (e.g.,
+                            'Wedding Jewelry,
+                            ' 'Daily Wear,
+                            ' 'Insured Items')
+                            for easy viewing and management, all simplified with secure Google
+                            sign-in.</p>
+                    </section>
+                    <section class="slider-content">
+                        <h1>Worried About Who Sees Your Valuables List?</h1>
+                        <p class="p-t-50">Traditional methods or less secure apps can expose your
+                            sensitive inventory. Precious List ensures total privacy by storing
+                            all your data—photos, details, and documents—directly and only in
+                            your personal Google Drive. You hold the only key.
+                        </p>
+                    </section>
+                    <section class="slider-content">
+                        <h1>Can You Instantly Recall Your Jewelry's Details & Value?</h1>
+                        <p class="p-t-50">Forgetting purchase dates, misplacing certificates, or
+                            struggling to find insurance details can be stressful and costly.
+                            Precious List allows you to meticulously catalog each item with
+                            photos, descriptions, purchase history, and important documents,
+                            keeping everything organized and instantly accessible.</p>
+                    </section>
+                    
+                    <!-- <section class="slider-content">
+                        <h1>Are you confident in your market's sustainability?</h1>
+                        <p class="p-t-50">Today's success is no guarantee of tomorrow's survival. Misjudging the
+                            sustainability of your market due to a lack of understanding of unit economics can
+                            jeopardise your business's future.</p>
+                    </section> -->
+                </div>
+                <!-- The circles/dots -->
+                <div style="text-align:center">
+                    <span class="dots" onclick="currentSlide(1)"></span>
+                    <span class="dots" onclick="currentSlide(2)"></span>
+                    <span class="dots" onclick="currentSlide(3)"></span>
+                    <!-- <span class="dots" onclick="currentSlide(4)"></span> -->
+                </div>
+            </div>
+            <div class="content-form align-center">
+                <div id="submit-form">
+                    <h2 class="p-b-50" style="text-align: center;">Join the Precious List Beta!</h2>
+                    <p style="padding-bottom: 30px; font-size: 1em;">
+                        Be among the first to experience a revolutionary way to manage your
+                        valuable items. Securely catalog your Jewelry and accessories with
+                        unparalleled privacy and ease. &nbsp;&nbsp;<br><strong>Sign up now for exclusive early access!</strong>
+                    </p>
+                    <input placeholder="Enter your email address" type="email" name="beta-email" class="c-text-box" />
+                    <div id="email-error" class="error-msg"></div>
+
+                    <button id="apply-now-button" class="c-text-btn" onclick="onSumbitEmail()">
+                        <div id="submit-text" style="font-weight: 600;">
+                        Get Early Access
+                        </div>
+                        <div id="loader" style="display: none;" class="lds-dual-ring"></div>
+                    </button>
+                </div>
+                <div class="success-overlay" id="welcome-succ-overlay">
+                    <div class="success-header">
+                        <button class="close-btn" onclick="handleOverlayClose()">X</button>
+                    </div>
+                    <div class="success-overlay-content">
+                        <div class="success-inner-content">
+                            <h1>Congratulations on joining the waitlist as a beta user!</h1>
+                            <p class="d-para">
+                                Thanks a bunch for signing up for our beta program. We're super excited to have you try out 
+                                <a href="http://preciouslist.io/" target="_blank">PreciousList.io</a> and see how it helps you manage your valuable items with clarity and confidence.
+                              </p>
+                            <p class="d-para">We're planning to roll out PreciousList to our first group of beta users in late June. Keep an eye out for an email from us with all the details as we get closer to the date.
+                            </p>
+                            <p class="d-para">As a beta user, your feedback will be gold for us, and we want to show our gratitude. So, we've got some cool perks in store for you:</p>
+                            <div>
+                                <ul class="list-points">
+                                    <li>
+                                        <h3 class="d-title">Early Bird Discount:</h3>
+                                        <p class="d-para">Get a sweet discount on your subscription if you sign up for a paid plan within a specific time after the official launch.</p>
+                                    </li>
+                                    <li>
+                                        <h3 class="d-title">Exclusive Product Roadmap Access:</h3>
+                                        <p class="d-para">Be in the know about upcoming features and have your say in the product's evolution.</p>
+                                    </li>
+                                    <li>
+                                        <h3 class="d-title">Beta User Goodies:</h3>
+                                        <p class="d-para">Show off your beta user status with pride - we've got some awesome digital goodies lined up just for you!</p>
+                                    </li>
+                                    <li>
+                                        <h3 class="d-title">Priority Support Channel:</h3>
+                                        <p class="d-para">You'll have access to a dedicated support channel for faster response times from our team.</p>
+                                    </li>
+                                </ul>
+                                <p class="d-para">We can't wait to have you on board and make PreciousList even better together!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+</body>
+<script>
+    let slidePosition = 1;
+    SlideShow(slidePosition);
+    SlideShowAuto();
+
+    //  Slide controls
+    function currentSlide(n) {
+        SlideShow(slidePosition = n);
+    }
+
+    /**
+     * Function to handle slid show on click ok dot indecators.
+     */
+    function SlideShow(n) {
+        let i;
+        let slides = document.getElementsByClassName("slider-content");
+        let circles = document.getElementsByClassName("dots");
+        if (n > slides.length) { slidePosition = 1 }
+        if (n < 1) { slidePosition = slides.length }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < circles.length; i++) {
+            circles[i].className = circles[i].className.replace(" enable", "");
+        }
+        slides[slidePosition - 1].style.display = "block";
+        circles[slidePosition - 1].className += " enable";
+    }
+
+    /**
+     * Function to handle auto slider for every 2s.
+     */
+    function SlideShowAuto() {
+        let i;
+        let slides = document.getElementsByClassName("slider-content");
+        let circles = document.getElementsByClassName("dots");
+
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slidePosition++;
+
+        for (i = 0; i < circles.length; i++) {
+            circles[i].className = circles[i].className.replace(" enable", "");
+        }
+        if (slidePosition > slides.length) { slidePosition = 1 }
+        slides[slidePosition - 1].style.display = "block";
+        circles[slidePosition - 1].className += " enable";
+        setTimeout(SlideShowAuto, 10000); // Change image every 2 seconds
+    }
+
+    /**
+     * Function to handle success popup overlay close.
+     */
+    function handleOverlayClose() {
+        let overlay = document.querySelector('#welcome-succ-overlay');
+        overlay.style.transform = 'translateX(-100%)';
+        overlay.style.opacity = '0';
+    }
+
+    /**
+     * Function to handle form submit with validation.
+     */
+    function onSumbitEmail() {
+        const email = document.querySelector('input[name="beta-email"]').value;
+
+        if (!email) {
+            document.getElementById("email-error").innerHTML = `<span style='color:red'>Email is required *</span>`;
+            return
+        } else {
+            document.getElementById("email-error").innerHTML = ``;
+        }
+
+        const isValidEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email);
+
+        if (!isValidEmail) {
+            document.getElementById(
+                "email-error",
+            ).innerHTML = `<span style='color:red'>Email is not valid*</span>`;
+            return;
+        } else {
+            document.getElementById("email-error").innerHTML = ``;
+        }
+
+        // Web App URL (replace with your actual deployed URL)
+        const webAppUrl = 'https://script.google.com/macros/s/AKfycbw94dq8QZmpL_eYGtgegBWlfUH2KuvLCT-VJqJAjhrV8BDTJE6uEG2gWA6_knLUOh6O/exec'; // Replace with your Web App URL
+
+        // Send the email to Google Sheets using Fetch API
+        fetch(webAppUrl, {
+            method: 'POST',
+            mode: "no-cors",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email: email })
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Handle success response
+            alert('Email submitted successfully!');
+            document.querySelector('form').reset(); // Reset the form
+        })
+        .catch(error => {
+            // Handle error response
+            alert('There was an error submitting your email.');
+            console.error('Error:', error);
+        });
+
+        function disableSubmitButton() {
+            const button = document.getElementById("apply-now-button");
+            const loader = document.getElementById("loader");
+            const submitText = document.getElementById("submit-text");
+            button.disabled = true;
+            button.style = "cursor:not-allowed;opacity:0.5";
+            loader.style = "display:inline-block"
+            submitText.style = 'display:none;'
+
+        }
+        function resetSubmitButton() {
+            const button = document.getElementById("apply-now-button");
+            const loader = document.getElementById("loader");
+            const submitText = document.getElementById("submit-text");
+            button.style.cursor = "";
+            button.style.opacity = "";
+            button.removeAttribute("disabled");
+            loader.style = 'display:none'
+            submitText.style = ''
+        }
+
+        function clearFields() {
+            document.querySelector('input[name="beta-email"]').value = "";
+        }
+
+        function resetForm() {
+            clearFields()
+            resetSubmitButton();
+        }
+
+        async function sendBetaEmail(fetchUrl) {
+            const body = JSON.stringify({
+                email: email
+            });
+            const headers = {
+                "Content-type": "application/json; charset=UTF-8",
+            };
+            disableSubmitButton();
+            try {
+                const submitForm = await fetch(fetchUrl, {
+                    // Adding method type
+                    method: "POST",
+
+                    // Adding body or contents to send
+                    body,
+
+                    // Adding headers to the request
+                    headers,
+                });
+                const res = await submitForm?.json();
+                if (res?.status === "success") {
+                    resetForm();
+                    let overlay = document.querySelector('#welcome-succ-overlay');
+                    overlay.style.display = 'block';
+                    overlay.style.transform = 'translateX(0)';
+                    overlay.style.opacity = '1';
+                } else {
+                    resetSubmitButton();
+                }
+            } catch (err) {
+                resetSubmitButton();
+                console.error(err, "error");
+            }
+        }
+
+        const localUrl = "http://localhost:8080/api/send-beta-email"; //To test local
+        const url = "https://flyerssoft-nodejs-app.azurewebsites.net/api/unit-economics-email"; // Backend prod url deployed in Azure
+
+        sendBetaEmail(url)
+    }
+
+</script>
+
+</html>
