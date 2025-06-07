@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>uniteconomics.io</title>
+    <title>PreciousList.io</title>
     <link rel="stylesheet" href="https://stijndv.com/fonts/Eudoxus-Sans.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -531,121 +531,203 @@
     /**
      * Function to handle form submit with validation.
      */
+    // function onSumbitEmail() {
+    //     const email = document.querySelector('input[name="beta-email"]').value;
+
+    //     if (!email) {
+    //         document.getElementById("email-error").innerHTML = `<span style='color:red'>Email is required *</span>`;
+    //         return
+    //     } else {
+    //         document.getElementById("email-error").innerHTML = ``;
+    //     }
+
+    //     const isValidEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email);
+
+    //     if (!isValidEmail) {
+    //         document.getElementById(
+    //             "email-error",
+    //         ).innerHTML = `<span style='color:red'>Email is not valid*</span>`;
+    //         return;
+    //     } else {
+    //         document.getElementById("email-error").innerHTML = ``;
+    //     }
+
+    //     // Web App URL (replace with your actual deployed URL)
+    //     const webAppUrl = 'https://script.google.com/macros/s/AKfycbw94dq8QZmpL_eYGtgegBWlfUH2KuvLCT-VJqJAjhrV8BDTJE6uEG2gWA6_knLUOh6O/exec'; // Replace with your Web App URL
+
+    //     // Send the email to Google Sheets using Fetch API
+    //     fetch(webAppUrl, {
+    //         method: 'POST',
+    //         mode: "no-cors",
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         },
+    //         body: JSON.stringify({ email: email })
+    //     })
+    //     .then(response => response.json())
+    //     .then(data => {
+    //         // Handle success response
+    //         alert('Email submitted successfully!');
+    //         document.querySelector('form').reset(); // Reset the form
+    //     })
+    //     .catch(error => {
+    //         // Handle error response
+    //         alert('There was an error submitting your email.');
+    //         console.error('Error:', error);
+    //     });
+
+    //     function disableSubmitButton() {
+    //         const button = document.getElementById("apply-now-button");
+    //         const loader = document.getElementById("loader");
+    //         const submitText = document.getElementById("submit-text");
+    //         button.disabled = true;
+    //         button.style = "cursor:not-allowed;opacity:0.5";
+    //         loader.style = "display:inline-block"
+    //         submitText.style = 'display:none;'
+
+    //     }
+    //     function resetSubmitButton() {
+    //         const button = document.getElementById("apply-now-button");
+    //         const loader = document.getElementById("loader");
+    //         const submitText = document.getElementById("submit-text");
+    //         button.style.cursor = "";
+    //         button.style.opacity = "";
+    //         button.removeAttribute("disabled");
+    //         loader.style = 'display:none'
+    //         submitText.style = ''
+    //     }
+
+    //     function clearFields() {
+    //         document.querySelector('input[name="beta-email"]').value = "";
+    //     }
+
+    //     function resetForm() {
+    //         clearFields()
+    //         resetSubmitButton();
+    //     }
+
+    //     async function sendBetaEmail(fetchUrl) {
+    //         const body = JSON.stringify({
+    //             email: email
+    //         });
+    //         const headers = {
+    //             "Content-type": "application/json; charset=UTF-8",
+    //         };
+    //         disableSubmitButton();
+    //         try {
+    //             const submitForm = await fetch(fetchUrl, {
+    //                 // Adding method type
+    //                 method: "POST",
+
+    //                 // Adding body or contents to send
+    //                 body,
+
+    //                 // Adding headers to the request
+    //                 headers,
+    //             });
+    //             const res = await submitForm?.json();
+    //             if (res?.status === "success") {
+    //                 resetForm();
+    //                 let overlay = document.querySelector('#welcome-succ-overlay');
+    //                 overlay.style.display = 'block';
+    //                 overlay.style.transform = 'translateX(0)';
+    //                 overlay.style.opacity = '1';
+    //             } else {
+    //                 resetSubmitButton();
+    //             }
+    //         } catch (err) {
+    //             resetSubmitButton();
+    //             console.error(err, "error");
+    //         }
+    //     }
+
+    //     const localUrl = "http://localhost:8080/api/send-beta-email"; //To test local
+    //     const url = "https://flyerssoft-nodejs-app.azurewebsites.net/api/unit-economics-email"; // Backend prod url deployed in Azure
+
+    //     sendBetaEmail(url)
+    // }
+
     function onSumbitEmail() {
-        const email = document.querySelector('input[name="beta-email"]').value;
+    const email = document.querySelector('input[name="beta-email"]').value;
 
-        if (!email) {
-            document.getElementById("email-error").innerHTML = `<span style='color:red'>Email is required *</span>`;
-            return
-        } else {
-            document.getElementById("email-error").innerHTML = ``;
-        }
-
-        const isValidEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email);
-
-        if (!isValidEmail) {
-            document.getElementById(
-                "email-error",
-            ).innerHTML = `<span style='color:red'>Email is not valid*</span>`;
-            return;
-        } else {
-            document.getElementById("email-error").innerHTML = ``;
-        }
-
-        // Web App URL (replace with your actual deployed URL)
-        const webAppUrl = 'https://script.google.com/macros/s/AKfycbw94dq8QZmpL_eYGtgegBWlfUH2KuvLCT-VJqJAjhrV8BDTJE6uEG2gWA6_knLUOh6O/exec'; // Replace with your Web App URL
-
-        // Send the email to Google Sheets using Fetch API
-        fetch(webAppUrl, {
-            method: 'POST',
-            mode: "no-cors",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ email: email })
-        })
-        .then(response => response.json())
-        .then(data => {
-            // Handle success response
-            alert('Email submitted successfully!');
-            document.querySelector('form').reset(); // Reset the form
-        })
-        .catch(error => {
-            // Handle error response
-            alert('There was an error submitting your email.');
-            console.error('Error:', error);
-        });
-
-        function disableSubmitButton() {
-            const button = document.getElementById("apply-now-button");
-            const loader = document.getElementById("loader");
-            const submitText = document.getElementById("submit-text");
-            button.disabled = true;
-            button.style = "cursor:not-allowed;opacity:0.5";
-            loader.style = "display:inline-block"
-            submitText.style = 'display:none;'
-
-        }
-        function resetSubmitButton() {
-            const button = document.getElementById("apply-now-button");
-            const loader = document.getElementById("loader");
-            const submitText = document.getElementById("submit-text");
-            button.style.cursor = "";
-            button.style.opacity = "";
-            button.removeAttribute("disabled");
-            loader.style = 'display:none'
-            submitText.style = ''
-        }
-
-        function clearFields() {
-            document.querySelector('input[name="beta-email"]').value = "";
-        }
-
-        function resetForm() {
-            clearFields()
-            resetSubmitButton();
-        }
-
-        async function sendBetaEmail(fetchUrl) {
-            const body = JSON.stringify({
-                email: email
-            });
-            const headers = {
-                "Content-type": "application/json; charset=UTF-8",
-            };
-            disableSubmitButton();
-            try {
-                const submitForm = await fetch(fetchUrl, {
-                    // Adding method type
-                    method: "POST",
-
-                    // Adding body or contents to send
-                    body,
-
-                    // Adding headers to the request
-                    headers,
-                });
-                const res = await submitForm?.json();
-                if (res?.status === "success") {
-                    resetForm();
-                    let overlay = document.querySelector('#welcome-succ-overlay');
-                    overlay.style.display = 'block';
-                    overlay.style.transform = 'translateX(0)';
-                    overlay.style.opacity = '1';
-                } else {
-                    resetSubmitButton();
-                }
-            } catch (err) {
-                resetSubmitButton();
-                console.error(err, "error");
-            }
-        }
-
-        const localUrl = "http://localhost:8080/api/send-beta-email"; //To test local
-        const url = "https://flyerssoft-nodejs-app.azurewebsites.net/api/unit-economics-email"; // Backend prod url deployed in Azure
-
-        sendBetaEmail(url)
+    if (!email) {
+        document.getElementById("email-error").innerHTML = `<span style='color:red'>Email is required *</span>`;
+        return;
+    } else {
+        document.getElementById("email-error").innerHTML = ``;
     }
+
+    const isValidEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email);
+
+    if (!isValidEmail) {
+        document.getElementById("email-error").innerHTML = `<span style='color:red'>Email is not valid*</span>`;
+        return;
+    } else {
+        document.getElementById("email-error").innerHTML = ``;
+    }
+
+    // Web App URL (replace with your actual deployed URL)
+    const webAppUrl = 'https://script.google.com/macros/s/AKfycbw94dq8QZmpL_eYGtgegBWlfUH2KuvLCT-VJqJAjhrV8BDTJE6uEG2gWA6_knLUOh6O/exec';
+
+    // Disable button during submission
+    disableSubmitButton();
+
+    // Send the email to Google Sheets using Fetch API
+    fetch(webAppUrl, {
+        method: 'POST',
+        mode: "no-cors",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email: email })
+    })
+    .then(() => {
+        // With no-cors mode, we can't read the actual response
+        // But if we reach here, the request was sent successfully
+        // Google Apps Script will handle the email saving
+        clearFields();
+        resetSubmitButton();
+        showSuccessOverlay();
+    })
+    .catch(error => {
+        // This will only catch network errors, not application errors
+        console.error('Network Error:', error);
+        resetSubmitButton();
+        document.getElementById("email-error").innerHTML = `<span style='color:red'>Network error. Please check your connection and try again.</span>`;
+    });
+
+    function disableSubmitButton() {
+        const button = document.getElementById("apply-now-button");
+        const loader = document.getElementById("loader");
+        const submitText = document.getElementById("submit-text");
+        button.disabled = true;
+        button.style = "cursor:not-allowed;opacity:0.5";
+        loader.style = "display:inline-block";
+        submitText.style = 'display:none;';
+    }
+
+    function resetSubmitButton() {
+        const button = document.getElementById("apply-now-button");
+        const loader = document.getElementById("loader");
+        const submitText = document.getElementById("submit-text");
+        button.style.cursor = "";
+        button.style.opacity = "";
+        button.removeAttribute("disabled");
+        loader.style = 'display:none';
+        submitText.style = '';
+    }
+
+    function clearFields() {
+        document.querySelector('input[name="beta-email"]').value = "";
+    }
+
+    function showSuccessOverlay() {
+        let overlay = document.querySelector('#welcome-succ-overlay');
+        overlay.style.display = 'block';
+        overlay.style.transform = 'translateX(0)';
+        overlay.style.opacity = '1';
+    }
+}
 
 </script>
 
